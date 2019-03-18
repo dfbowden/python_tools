@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 """ 
-Variety of tools useful for M&S, GNC, ML
+Variety of tools useful for simulations
 MIT License
 
 Created on Sun Mar 17 11:23:44 2019
