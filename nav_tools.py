@@ -12,10 +12,12 @@ Created on Sun Mar 17 21:51:08 2019
 import numpy as np
 from numpy.linalg import inv
 
-# The stability of this algorithm could be improved by using
-# a square root kalman filter
+# Cholesky decomposition would probably be more stable than the direct inverse
+# The stability of this algorithm could be improved by using a square root kalman filter
 def kf(F,B,H,Q,R,x_prev,P_prev,u,z):
     # Check dimensions...
+    if F.ndim != 2 or B.ndim != 2 or H.ndim != 2 or Q.ndim != 2 or R.ndim != 2 or x_prev.ndim != 2 or P_prev.ndim != 2 or u.ndim != 2 or z.ndim != 2:
+        raise Exception('All arguments must be a 2D matrix')
     m = x_prev.shape[0]
     n = u.shape[0]
     o = z.shape[0]

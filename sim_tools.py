@@ -11,7 +11,7 @@ Created on Sun Mar 17 11:23:44 2019
 
 import numpy as np
 
-def RK4_step(ODE,state,time,dt,**kwargs):
+def RK4_step(state,time,dt,ODE,**kwargs):
     """ 1 step of the 4th Order Runge Kutta Method
     
     @param ODE:      The system to be integrated. 
@@ -36,15 +36,15 @@ def RK4_step(ODE,state,time,dt,**kwargs):
         raise Exception("dt argument must be a float!")
     
     k1 = ODE(state,time,**kwargs)
-    k2 = ODE(state + k1*dt/2,time+dt/2)
-    k3 = ODE(state + k2*dt/2,time+dt/2)
-    k4 = ODE(state + k3*dt,  time+dt)
+    k2 = ODE(state + k1*dt/2,time+dt/2,**kwargs)
+    k3 = ODE(state + k2*dt/2,time+dt/2,**kwargs)
+    k4 = ODE(state + k3*dt,  time+dt,**kwargs)
     a = np.array([1.0/6.0, 1.0/3.0, 1.0/3.0, 1.0/6.0])
     next_state = state + dt*(a[0]*k1 + a[1]*k2 + a[2]*k3 + a[3]*k4)
     next_time = time + dt
     return(next_state,next_time)
     
-def RK4(ODE,state,ti,tf,dt,**kwargs):
+def RK4(state,ti,tf,dt,ODE,**kwargs):
     """ 4th Order Runge Kutta Method
     
     @param ODE:      The system to be integrated. 

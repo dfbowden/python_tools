@@ -14,11 +14,11 @@ import numpy as np
 def gravity(state,time):
     ''' Simple gravity ODE
     
-    state[0] is position
-    state[1] is velocity
+    state[0,0] is position
+    state[1,0] is velocity
     '''
-    state_dot = np.zeros(2)
-    state_dot[0] = state[1]
-    state_dot[1] = -9.8
+    state_dot = np.zeros((2,1))
+    state_dot[0,0] = state[1,0]
+    state_dot[1,0] = -9.8
     
     return(state_dot)
