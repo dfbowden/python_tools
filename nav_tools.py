@@ -14,6 +14,8 @@ from numpy.linalg import inv
 
 # The stability of this algorithm could be improved by using
 # a square root kalman filter
+
+# Should change coding style to "It's easier to ask for forgiveness than permission."
 def kf(F,B,H,Q,R,x_prev,P_prev,u,z):
     # Check dimensions...
     m = x_prev.shape[0]
