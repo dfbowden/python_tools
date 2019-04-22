@@ -8,6 +8,8 @@ MIT License
 Created on Sun Apr 21 11:32:38 2019
 @author: dfbowden
 """
+
+# How should this be structured?
 import Sensors
 import Navigation
 import Guidance
@@ -18,21 +20,21 @@ import Physics
 
 class Vehicle:
     def __init__(self):
-        sens = Sensors()
-        nav = Navigation()
-        guid = Guidance()
-        ap = Autopilot()
-        con = Controls()
-        act = Actuators()
-        phys = Physics()
+        self.sens = Sensors.IMU
+        self.nav = Navigation()
+        self.guid = Guidance()
+        self.ap = Autopilot()
+        self.con = Controls()
+        self.act = Actuators()
+        self.phys = Physics()
         
     def exec(self):
-        sens.exec()
-        nav.exec()
-        guid.exec()
-        ap.exec()
-        con.exec()
-        act.exec()
-        phys.exec()
+        self.sens.exec()
+        self.nav.exec()
+        self.guid.exec()
+        self.ap.exec()
+        self.con.exec()
+        self.act.exec()
+        self.phys.exec()
         
         
